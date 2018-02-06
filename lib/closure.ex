@@ -31,6 +31,14 @@ defmodule Closure do
     getDistincts([{a,b}|[{b,a}|symmetric(tail)]])
   end
 
+  def reflexive([]) do 
+    []
+  end
+
+  def reflexive([{a,b}|tail]) do
+    getDistincts([{a,a}|[{b,b}|[{a,b}|reflexive(tail)]]])
+  end
+
   def newWays(_,[],_) do
     []
   end
@@ -80,5 +88,9 @@ defmodule Closure do
 
   def transOfSym(relation) do
     transitive(symmetric(relation))
+  end
+
+  def reflexTrans(relation) do
+    reflexive(transitive(relation))
   end
 end
