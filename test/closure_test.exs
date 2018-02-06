@@ -40,6 +40,11 @@ defmodule ClosureTest do
   	assert Enum.sort(Closure.symmetric(x)) == Enum.sort([{1,1},{1,3},{2,4},{5,6},{3,1},{4,2},{6,5},{9,0},{0,9}])
   end
 
+  test "reflexive" do
+    x = [{1,2}, {2,1}, {3,4}, {4,4}, {5,6}, {8,9}, {9,10}]
+    assert Enum.sort(Closure.reflexive(x)) == Enum.sort([{1,1}, {1,2},{2,1},{2,2}, {3,3},{3,4},{4,4},{5,5},{5,6},{6,6},{8,8},{9,9},{8,9},{9,10},{10,10}])
+  end
+
   test "newWays_NoNewWay" do
   	x = [{1,2},{3,4},{5,4}]
   	assert Closure.newWays({1,2}, x,[]) == []

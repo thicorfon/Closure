@@ -1,5 +1,5 @@
 defmodule Closure do
-  def inList(_, [])do
+  def inList(_, []) do
     false
   end
 
